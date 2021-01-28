@@ -22,8 +22,38 @@ function start(){
     .then(function(data){
         const team = data.team
         builtTeam.push(team)
+        addManager()
     })
-
+    function addManager() {
+        inquirer.prompt([
+            {
+                message: "What is your team manager's name?",
+                name: "name"
+            },
+            {
+                message: "What is your team manager's id ?",
+                name: 'id'
+            },
+            {
+                message: "What is your team manager's email address?",
+                name: "email"
+            },
+    
+            {
+                type: "number",
+                message: "What is your team manager's office number?",
+                name: "officeNumber"
+            },
+        ])
+        .then(function (data){
+            const name = data.name;
+            const id = data.id;
+            const email = data.email;
+            const officeNumber = data.officeNumber;
+            const teamMember = new Manager(name, id, email, officeNumber)
+            builtTeam.push(teamMember)
+        })
+}
 }
 
 
