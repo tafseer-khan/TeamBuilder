@@ -9,6 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { ADDRGETNETWORKPARAMS } = require("dns");
 
 let builtTeam = [];
 
@@ -52,7 +53,92 @@ function start(){
             const officeNumber = data.officeNumber;
             const teamMember = new Manager(name, id, email, officeNumber)
             builtTeam.push(teamMember)
+            addTeam();
         })
+}
+function addTeam(){
+    inquirer.prompt([
+        {
+            type:"list",
+            message: "Would you like to add Team Members?",
+            choices: ["Add Engineer","Add Intern","No more Team Members"],
+            name: "addMembers"
+        }
+    ])
+    .then(function(data){
+        switch (data.addMemberData){
+            case "Add Engineer": 
+            addEngineer();
+            break;
+
+            case "Add Intern": 
+            addIntern();
+            break;
+
+            case "No more Team Members":
+                buildTeam();
+                break;
+        }
+
+    });
+}
+function addEngineer(){
+    inquirer.prompt([
+        {
+            message: "What is the engineer's name?",
+            name: "name"
+        },
+        {
+            message: "What is the engineer's id?",
+            name: "id"
+        },
+        {
+            message: "What is the engineer's email?",
+            name:"email"
+        },
+        {
+            message: "What is the engineer's Github username?",
+            name:"github"
+        }
+    ])
+    .then(function(data){
+        const name = data.name;
+        const id = data.id;
+        const email = data.email;
+        const github = data.github;
+        const teamMember = new Engineer(name,id,email,github);
+        builtTeam.push(teamMember)
+        addTeamMembers();
+    });
+};
+function addIntern(){
+    inquirer.prompt([
+        {
+            message: "What is the intern's name?",
+            name: "name"
+        },
+        {
+            message: "What is the intern's id?",
+            name: "id"
+        },
+        {
+            message: "What is teh intern's email?",
+            name: "email"
+        },
+        {
+            message: "Where did the intern go to school?",
+            name: "school"
+        }
+    ])
+    .then(function(data){
+        const name = data.name;
+        const id = data.id;
+        const email = data.email;
+        const school = data.school;
+        const teamMember = new Intern(name,id,email,school)
+        builtTeam.push(teamMember);
+        addTeamMembers();
+    })
 }
 }
 start();
