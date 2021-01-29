@@ -11,7 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const { ADDRGETNETWORKPARAMS } = require("dns");
 
-let builtTeam = [];
+let employees = [];
 
 function start(){
     inquirer.prompt([
@@ -22,7 +22,7 @@ function start(){
     ])
     .then(function(data){
         const team = data.team
-        builtTeam.push(team)
+        employees.push(team)
         addManager()
     })
     function addManager() {
@@ -52,7 +52,7 @@ function start(){
             const email = data.email;
             const officeNumber = data.officeNumber;
             const teamMember = new Manager(name, id, email, officeNumber)
-            builtTeam.push(teamMember)
+            employees.push(teamMember)
             addTeam();
         })
 }
@@ -66,7 +66,7 @@ function addTeam(){
         }
     ])
     .then(function(data){
-        switch (data.addMemberData){
+        switch (data.addMembers){
             case "Add Engineer": 
             addEngineer();
             break;
@@ -107,8 +107,8 @@ function addEngineer(){
         const email = data.email;
         const github = data.github;
         const teamMember = new Engineer(name,id,email,github);
-        builtTeam.push(teamMember)
-        addTeamMembers();
+        employees.push(teamMember)
+        addTeam();
     });
 };
 function addIntern(){
@@ -136,9 +136,13 @@ function addIntern(){
         const email = data.email;
         const school = data.school;
         const teamMember = new Intern(name,id,email,school)
-        builtTeam.push(teamMember);
-        addTeamMembers();
+        employees.push(teamMember);
+        addTeam();
     })
+}
+function buildTeam(employees){
+    console.log('Team Members Registered! website published!')
+    console.log(employees);
 }
 }
 start();
