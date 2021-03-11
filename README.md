@@ -19,7 +19,7 @@ Start application using node index.js
 start using node index.js, use created html page for your website
 
 ## Screenshot
-![projectScreenshot]()
+![projectScreenshot](https://github.com/tafseer-khan/TeamBuilder/blob/main/Assets/app.js%20-%20TeamBuilder%20-%20Visual%20Studio%20Code%202021-03-11%2010-21-57.mp4)
 
 ## Contribution
 Please contact me directly
@@ -28,7 +28,7 @@ Please contact me directly
 Please create testing files and use jest
 
 ## Liscense
-[MIT](undefined)
+[MIT](https://github.com/tafseer-khan/TeamBuilder/blob/main/LICENSE)
 ## Contact
 Please contact me through GitHub or Email!
 
