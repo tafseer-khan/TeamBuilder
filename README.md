@@ -19,7 +19,7 @@ Start application using node index.js
 start using node index.js, use created html page for your website
 
 ## Screenshot
-![projectScreenshot](https://github.com/tafseer-khan/TeamBuilder/blob/main/Assets/app.js%20-%20TeamBuilder%20-%20Visual%20Studio%20Code%202021-03-11%2010-21-57.mp4)
+![projectScreenshot](https://github.com/tafseer-khan/TeamBuilder/blob/main/Assets/Demo.gif)
 
 ## Contribution
 Please contact me directly
